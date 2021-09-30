@@ -1087,7 +1087,6 @@ func_isprime p | n :% 1 <- p,
     fermatProbPrime a n
       | (d, s) <- oddify $ n-1
       = rem (a^d) n == 1 || or [rem (a^(d*(2^r))) n == n-1 | r <- [0..s-1]]
-      | otherwise = False
     jacobi :: Integer -> Integer -> Integer
     jacobi _ 1 = 1
     jacobi 1 _ = 1
