@@ -382,7 +382,7 @@ roundAway d = if d<0 then floor d else ceiling d
 primes_list = 2 : oddprimes
   where
     oddprimes = sieve [3,5..] 9 oddprimes
-    sieve (x:xs) q ps@ ~(p:t)
+    sieve (x:xs) q ps@(p:t)
       | x < q     = x : sieve xs q ps
       | otherwise =     sieve (xs `minus` [q, q+2*p..]) (head t^2) t
     minus (x:xs) (y:ys) = case (compare x y) of
