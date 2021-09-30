@@ -151,7 +151,7 @@ main = do
                             Left err             -> putStrLn err
                             Right []             -> putStrLn "Could not infer valid type for program"
                             Right (lineExprs : _) -> do writeFile outfile $ produceFile lineExprs
-                                                        (_, Just hout, _, _) <- createProcess (proc "runhaskell" (outfile : map fst typedArgs)){ std_out = CreatePipe }
+                                                        (_, Just hout, _, _) <- createProcess (proc "runghc" (outfile : map fst typedArgs)){ std_out = CreatePipe }
                                                         result <- hGetContents hout
                                                         hSetBuffering stdout NoBuffering
                                                         putStr result
