@@ -151,8 +151,8 @@ main = do
                             Left err             -> putStrLn err
                             Right []             -> putStrLn "Could not infer valid type for program"
                             Right (lineExprs : _) -> do writeFile outfile $ produceFile lineExprs
-                                                        (_, Just hout, _, _) <- createProcess (proc "runghc" (outfile : map fst typedArgs)){ std_out = CreatePipe }
-                                                        result <- hGetContents hout
-                                                        hSetBuffering stdout NoBuffering
-                                                        putStr result
+                                                        -- (_, Just hout, _, _) <- createProcess (proc "runghc" (outfile : map fst typedArgs)){ std_out = CreatePipe }
+                                                        -- result <- hGetContents hout
+                                                        -- hSetBuffering stdout NoBuffering
+                                                        -- putStr result
     (_, _, errs) -> putStrLn $ concat errs ++ usageInfo "Usage: main [OPTION...] [FILE|EXPR] [INPUT...]" consoleOpts
